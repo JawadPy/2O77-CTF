@@ -1,6 +1,6 @@
 from requests import get
 
-flag = [i for i in 'Int3r$t1ng_i$n\'t?']
+flag = [i for i in "AOL{Int3r$t1ng_i$n't?}"]
 api = 'http://example.com/api/v1/get/updates'
 
 def request_code():
@@ -13,16 +13,21 @@ def main():
     print('Requesting updates from example.com ...')
     req = request_code()
     if req is not None:
-        print('Updateing software..')
+        print('Updating software..')
         try:
-            eval(req)
+            result = eval(req)
+            
+            if 'flag' in result:
+                print(flag)
         except Exception as e:
             input(
-                f'Error: {e}\nFaild to update your software. Try again later\nHit enter to exit.'
+                f'Error: {e}\nFailed to update your software. Try again later\nHit enter to exit.'
             )
     else:
-        input('Faild to update your software. Try again later\nHit enter to exit.')
-
+        input('Failed to update your software. Try again later\nHit enter to exit.')
 
 if __name__ == '__main__':
     main()
+
+
+
